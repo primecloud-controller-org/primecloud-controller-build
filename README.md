@@ -36,3 +36,4 @@ PCCビルド用イメージを作成します。
 
 ### LICENSE
 
+GNU GENERAL PUBLIC LICENSE Version 2.0 or later
