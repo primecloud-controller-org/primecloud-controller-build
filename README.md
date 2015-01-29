@@ -20,13 +20,13 @@ PCCビルド用イメージを作成します。
 
 ### PCC本体のパッケージング
 最新のPCCをビルドし、インストールパッケージを作成します。
-作成後のファイルはホスト側の/opt/pccbuildディレクトリにコピーします。
+作成後のファイルはホスト側の/work以下にコピーします。
 
 コマンド例：
 
 	コンテナの起動とビルド後のファイルのコピー
 
-	#docker run -i --name pccoss-build pccoss:build1 && rm -rf /opt/pccbuild/primecloud-controller && docker cp pccoss-build:/primecloud-controller /opt/pccbuild && docker rm pccoss-build
+	#docker run -i --name pccoss-build pccoss-build:2.4.3 && rm -rf /tmp/pccbuild/primecloud-controller && docker cp pccoss-build:/primecloud-controller /tmp/pccbuild && docker rm pccoss-build
 
 
 ### インストーラパッケージの場所
