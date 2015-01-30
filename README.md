@@ -1,7 +1,5 @@
 # primecloud-controller-build
 
-========
-
 PrimeCloud Controllerのビルド用プロジェクトです。
 
 Dockerを利用することでどの環境でも同様のバイナリパッケージを作成することができます。
