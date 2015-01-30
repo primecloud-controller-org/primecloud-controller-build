@@ -20,8 +20,8 @@ RUN mkdir -p /opt/pccbuild
 
 ENV PCC_REPOSITORY https://github.com/primecloud-controller-org/primecloud-controller.git
 
-#choose master branch
-RUN git clone -b master $PCC_REPOSITORY
+#choose develop branch
+RUN git clone -b develop $PCC_REPOSITORY
 
 #pre build for maven dependency
 WORKDIR /primecloud-controller
