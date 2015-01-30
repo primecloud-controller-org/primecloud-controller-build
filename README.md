@@ -36,7 +36,7 @@ https://registry.hub.docker.com/u/primecloudcontroller/primecloud-controller-bui
 ### インストーラパッケージの場所
 インストール用のバイナリは以下に配備されています。
 
-	# /opt/pccbuild/primecloud-controller/auto-tool/install-tool/target/PrimeCloud-Controller-2.4.3.tar.gz
+	# /tmp/pccbuild/primecloud-controller/auto-tool/install-tool/target/PrimeCloud-Controller-2.4.3.tar.gz
 
 ### LICENSE
 
