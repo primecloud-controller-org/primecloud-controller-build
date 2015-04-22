@@ -8,7 +8,7 @@ PCC_BIN=PrimeCloud-Controller-$PCC_VERSION.tar.gz
 
 docker run -i --name pccoss-build pccoss-build:$PCC_VERSION && rm -rf /opt/tmp/primecloud-controller && docker cp pccoss-build:/primecloud-controller /tmp/pccbuild && docker rm pccoss-build
 
-if [ -d /work ]; then
+if [ ! -d /work ]; then
 mkdir /work
 fi
 
