@@ -30,13 +30,17 @@ PCCビルド用イメージを作成します。
 
 	# docker run -i --name pccoss-build primecloudcontroller/primecloud-controller-build:2.4.5 && rm -rf /tmp/pccbuild/primecloud-controller && docker cp pccoss-build:/primecloud-controller /tmp/pccbuild && docker rm pccoss-build
 
+	最新版のビルド方法
+
+	# docker run --rm -v /tmp/pccbuild:/opt/pccbuild/ primecloudcontroller/primecloud-controller-build:latest
+
 Docker Hub
 https://registry.hub.docker.com/u/primecloudcontroller/primecloud-controller-build/
 
 ### インストーラパッケージの場所
 インストール用のバイナリは以下に配備されています。
 
-	# /tmp/pccbuild/primecloud-controller/auto-tool/install-tool/target/PrimeCloud-Controller-2.4.5.tar.gz
+	# /tmp/pccbuild/primecloud-controller/auto-tool/install-tool/target/PrimeCloud-Controller-<version>.tar.gz
 
 ### LICENSE
 
