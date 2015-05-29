@@ -1,4 +1,4 @@
-FROM centos:centos6
+FROM centos:centos6.6
 
 MAINTAINER Tetsurou Ayano (tetsurou.ayano@scsk.jp)
 
