@@ -4,7 +4,17 @@ MAINTAINER Tetsurou Ayano (tetsurou.ayano@scsk.jp)
 
 RUN yum -y update
 #Install common
-RUN yum -y install wget tar vim git
+RUN yum -y install wget tar vim 
+
+#Install git
+ENV GIT_VERSION 2.6.4
+ENV GIT_HOME /opt/git/git-$GIT_VERSION
+RUN mkdir -p $GIT_HOME
+RUN yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-ExtUtils-MakeMaker gcc
+RUN wget -O /tmp/v$GIT_VERSION.tar.gz https://github.com/git/git/archive/v$GIT_VERSION.tar.gz
+RUN cd /opt/git && tar zxf /tmp/v$GIT_VERSION.tar.gz
+RUN cd $GIT_HOME && make prefix=/usr/local all && make prefix=/usr/local install
+
 #Install JDK6
 RUN yum -y install java-1.6.0-openjdk java-1.6.0-openjdk-devel
 # Install Maven
@@ -19,10 +29,10 @@ RUN rm /tmp/apache-maven-$MAVEN_VERSION-bin.tar.gz
 RUN mkdir -p /opt/pccbuild
 
 ENV PCC_REPOSITORY https://github.com/primecloud-controller-org/primecloud-controller.git
-ENV PCC_VERSIONS 2.5.1
+ENV PCC_VERSION 2.5.1
 
 #choose master branch
-RUN git clone --depth=1 -b $PCC_VERSIONS $PCC_REPOSITORY
+RUN git clone --depth=1 -b $PCC_VERSION $PCC_REPOSITORY
 
 #pre build for maven dependency
 WORKDIR /primecloud-controller
