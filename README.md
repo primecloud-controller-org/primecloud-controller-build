@@ -13,8 +13,8 @@ PCCビルド用イメージを作成します。
 
 コマンド例：
 
-	version 2.6.0の場合
-	# docker build -t pccoss-build:2.60. tag/2.6.0/
+	version 2.6.1の場合
+	# docker build -t pccoss-build:2.60. tag/2.6.1/
 
 ### PCC本体のパッケージング
 最新のPCCをビルドし、インストールパッケージを作成します。
@@ -24,11 +24,11 @@ PCCビルド用イメージを作成します。
 
 	コンテナの起動とビルド後のファイルのコピー
 
-	# docker run -i --name pccoss-build pccoss-build:2.6.0 && rm -rf /tmp/pccbuild/primecloud-controller && docker cp pccoss-build:/primecloud-controller /tmp/pccbuild && docker rm pccoss-build
+	# docker run -i --name pccoss-build pccoss-build:2.6.1 && rm -rf /tmp/pccbuild/primecloud-controller && docker cp pccoss-build:/primecloud-controller /tmp/pccbuild && docker rm pccoss-build
 
 	もしくは、すぐに使用したい方はDockerHubに公開済みのイメージからも起動できます。
 
-	# docker run -i --name pccoss-build primecloudcontroller/primecloud-controller-build:2.6.0 && rm -rf /tmp/pccbuild/primecloud-controller && docker cp pccoss-build:/primecloud-controller /tmp/pccbuild && docker rm pccoss-build
+	# docker run -i --name pccoss-build primecloudcontroller/primecloud-controller-build:2.6.1 && rm -rf /tmp/pccbuild/primecloud-controller && docker cp pccoss-build:/primecloud-controller /tmp/pccbuild && docker rm pccoss-build
 
 	最新版のビルド方法
 
