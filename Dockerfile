@@ -7,6 +7,10 @@ RUN yum -y update
 RUN yum -y install wget tar vim git
 #Install JDK6
 RUN yum -y install java-1.6.0-openjdk java-1.6.0-openjdk-devel
+
+ENV JAVA_HOME /usr/lib/jvm/jre-1.6.0-openjdk.x86_64
+ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin
+
 # Install Maven
 ENV MAVEN_VERSION 3.2.5
 ENV M2_HOME /opt/maven/apache-maven-$MAVEN_VERSION
