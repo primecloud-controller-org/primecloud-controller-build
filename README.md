@@ -14,7 +14,7 @@ PCCビルド用イメージを作成します。
 コマンド例：
 
 	version 2.6.1の場合
-	# docker build -t pccoss-build:2.60. tag/2.6.1/
+	# docker build -t pccoss-build:2.6.1 tag/2.6.1/
 
 ### PCC本体のパッケージング
 最新のPCCをビルドし、インストールパッケージを作成します。
