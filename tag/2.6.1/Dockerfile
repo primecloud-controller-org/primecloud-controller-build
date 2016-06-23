@@ -1,22 +1,15 @@
-FROM centos:centos6.6
+FROM centos:centos7.2.1511
 
 MAINTAINER Tetsurou Ayano (tetsurou.ayano@scsk.jp)
 
-RUN yum -y update
+RUN yum -y install yum-plugin-ovl
+RUN yum -y update 
 #Install common
-RUN yum -y install wget tar vim 
+RUN yum -y install wget tar vim git
 
-#Install git
-ENV GIT_VERSION 2.6.4
-ENV GIT_HOME /opt/git/git-$GIT_VERSION
-RUN mkdir -p $GIT_HOME
-RUN yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-ExtUtils-MakeMaker gcc
-RUN wget -O /tmp/v$GIT_VERSION.tar.gz https://github.com/git/git/archive/v$GIT_VERSION.tar.gz
-RUN cd /opt/git && tar zxf /tmp/v$GIT_VERSION.tar.gz
-RUN cd $GIT_HOME && make prefix=/usr/local all && make prefix=/usr/local install
+#Install JDK7
+RUN yum -y install java-1.7.0-openjdk java-1.7.0-openjdk-devel
 
-#Install JDK6
-RUN yum -y install java-1.6.0-openjdk java-1.6.0-openjdk-devel
 # Install Maven
 ENV MAVEN_VERSION 3.2.5
 ENV M2_HOME /opt/maven/apache-maven-$MAVEN_VERSION
@@ -25,11 +18,15 @@ RUN wget -O /tmp/apache-maven-$MAVEN_VERSION-bin.tar.gz http://ftp.kddilabs.jp/i
 RUN cd /opt/maven && tar zxf /tmp/apache-maven-$MAVEN_VERSION-bin.tar.gz
 RUN ln -s $M2_HOME/bin/mvn /usr/bin/mvn
 RUN rm /tmp/apache-maven-$MAVEN_VERSION-bin.tar.gz
+
 # Environment parameters
 RUN mkdir -p /opt/pccbuild
 
 ENV PCC_REPOSITORY https://github.com/primecloud-controller-org/primecloud-controller.git
 ENV PCC_VERSION 2.6.1
+
+ENV JAVA_HOME /usr/lib/jvm/jre-1.7.0-openjdk
+ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin
 
 #choose master branch
 RUN git clone --depth=1 -b $PCC_VERSION $PCC_REPOSITORY
@@ -38,6 +35,8 @@ RUN git clone --depth=1 -b $PCC_VERSION $PCC_REPOSITORY
 WORKDIR /primecloud-controller
 RUN git pull
 RUN mvn clean install -Dmvn.test.skip=true
+#RUN mvn dependency:resolve
+
 # Build PCC
 ADD build.sh /opt/build.sh
 RUN chmod +x /opt/build.sh

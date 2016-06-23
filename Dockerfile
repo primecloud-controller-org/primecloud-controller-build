@@ -1,12 +1,17 @@
-FROM centos:centos6.6
+FROM centos:centos7.2.1511
 
 MAINTAINER Tetsurou Ayano (tetsurou.ayano@scsk.jp)
 
+RUN yum -y install yum-plugin-ovl
 RUN yum -y update
 #Install common
 RUN yum -y install wget tar vim git
 #Install JDK6
-RUN yum -y install java-1.6.0-openjdk java-1.6.0-openjdk-devel
+RUN yum -y install java-1.7.0-openjdk java-1.7.0-openjdk-devel
+
+ENV JAVA_HOME /usr/lib/jvm/jre-1.7.0-openjdk
+ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin
+
 # Install Maven
 ENV MAVEN_VERSION 3.2.5
 ENV M2_HOME /opt/maven/apache-maven-$MAVEN_VERSION
