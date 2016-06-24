@@ -32,7 +32,7 @@ PCCビルド用イメージを作成します。
 
 	最新版のビルド方法
 
-	# docker run --rm -v /tmp/pccbuild:/opt/pccbuild/ primecloudcontroller/primecloud-controller-build:latest
+	# docker run --rm --privileged -v /tmp/pccbuild:/opt/pccbuild/ primecloudcontroller/primecloud-controller-build:latest
 
 Docker Hub
 https://registry.hub.docker.com/u/primecloudcontroller/primecloud-controller-build/
